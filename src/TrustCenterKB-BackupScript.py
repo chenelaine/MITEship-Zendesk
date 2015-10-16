@@ -16,6 +16,10 @@ import datetime
 import requests
 import csv
 
+''' **************** Nullify agent username and pw for security ''' 
+agentUsername = 'null'
+
+
 ''' **************** Getting Zendesk agent login credentials from the user'''
 agentUsername = input('Please enter Zendesk agent username:')
 agentPassword = input('Please enter Zendesk agent password:')
