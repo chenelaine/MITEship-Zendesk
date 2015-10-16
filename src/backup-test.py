@@ -23,9 +23,6 @@ agentPassword = input('Please enter Zendesk agent password:')
 ''' Compiling credentials'''
 credentials = agentUsername, agentPassword
 
-print('Press any key to continue...')
-input()
-
 ''' **************** Getting ready to pull down the backup'''
 
 session = requests.Session()
@@ -40,6 +37,7 @@ if not os.path.exists(backup_path):
   os.makedirs(backup_path)
   
 endpoint = zendesk + '/api/v2/help_center/en-us/articles.json'.format(locale=language.lower()) 
+
 print('Press any key to continue...')
 input()
 
@@ -47,6 +45,7 @@ input()
 response = session.get(endpoint)
 
 '''Page through all the articles and keep retrieving until there are no more pages'''
+articleCount = 0
 while endpoint:
     
      '''get the endpoint in json format'''
@@ -66,7 +65,10 @@ while endpoint:
          filename = '{id}.html'.format(id=article['id'])
          with open(os.path.join(backup_path, filename), mode='w', encoding='utf-8') as f:
              f.write(title + '\n' + article['body'])
-         print('{title} copied!'.format(title=article['title']))
+         '''articleRawTitle = '{title} copied!'.format(title=article['title'])
+         print(artileRawTitle.encode('cp850', errors='replace'))'''
+         articleCount = articleCount + 1
+         print('Article #', articleCount, 'written to file')
      
      '''page through the results until next page is null'''
      endpoint = data['next_page']  
