@@ -14,6 +14,7 @@ input()
 import os
 import datetime
 import requests
+import csv
 
 ''' **************** Getting Zendesk agent login credentials from the user'''
 agentUsername = input('Please enter Zendesk agent username:')
@@ -50,6 +51,7 @@ while endpoint:
     
      '''get the endpoint in json format'''
      response = session.get(endpoint)
+     
      '''exit if error'''
      if response.status_code != 200:
          print('Failed to retrieve articles with error {}'.format(response.status_code))
@@ -60,7 +62,11 @@ while endpoint:
 
      '''Print article titles for reference'''
      for article in data['articles']:
-         print(article['title'])
+         title = '<h1>' + article['title'] + '</h1>'
+         filename = '{id}.html'.format(id=article['id'])
+         with open(os.path.join(backup_path, filename), mode='w', encoding='utf-8') as f:
+             f.write(title + '\n' + article['body'])
+         print('{title} copied!'.format(title=article['title']))
      
      '''page through the results until next page is null'''
      endpoint = data['next_page']  
