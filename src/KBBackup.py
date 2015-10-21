@@ -23,16 +23,16 @@ agentUsername = 'null'
 
 
 ''' **************** Getting Zendesk agent login credentials from the user'''
-agentUsername = input('Please enter Zendesk agent username:')
-agentPassword = input('Please enter Zendesk agent password:')
+'''agentUsername = input('Please enter Zendesk agent username:')'''
+'''agentPassword = input('Please enter Zendesk agent password:')'''
 
 ''' Compiling credentials'''
-credentials = agentUsername, agentPassword
+'''credentials = agentUsername, agentPassword'''
 
 ''' **************** Getting ready to pull down the backup'''
 ''' set up session variable'''
 session = requests.Session()
-session.auth = credentials
+'''session.auth = credentials'''
 
 '''set up zendesk url, language'''
 zendesk = 'https://miteship.zendesk.com'
