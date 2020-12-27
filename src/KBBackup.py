@@ -98,14 +98,14 @@ while endpoint:
                         category_name = category['name']
           
         article_name = article['title']
-        categoryTitle = '<em><strong>CATEGORY:</strong> ' + category_name + '</em>'
-        sectionTitle = '<em><strong>SECTION:</strong> ' + section_name + '</em>'
-        articleTitle = '<h1>' + article_name + '</h1>'
-        articleFilename = '{id}.html'.format(id=article['id'])
+        category_title = '<em><strong>CATEGORY:</strong> ' + category_name + '</em>'
+        section_title = '<em><strong>SECTION:</strong> ' + section_name + '</em>'
+        article_title = '<h1>' + article_name + '</h1>'
+        article_filename = '{id}.html'.format(id=article['id'])
          
-        fileHandle = open(os.path.join(backup_path, articleFilename), mode='w', encoding='utf-8')
+        file_handle = open(os.path.join(backup_path, article_filename), mode='w', encoding='utf-8')
              
-        with fileHandle as f:
+        with file_handle as f:
             # FRONT MATTER
             f.write('<!DOCTYPE html>\n')
             f.write('<html>\n')
@@ -116,11 +116,11 @@ while endpoint:
             
             # BODY
             f.write('<body>\n')
-            f.write(articleTitle)
+            f.write(article_title)
             f.write('<br>')
-            f.write(categoryTitle)
+            f.write(category_title)
             f.write('<br>')
-            f.write(sectionTitle)
+            f.write(section_title)
             f.write('<br>')
             f.write(article['body'])
             f.write('</body>\n')
@@ -129,22 +129,18 @@ while endpoint:
             f.write('</html>\n')
 
          
-        ''' this was giving the script trouble bc command cannot display non
-             unicode characters. comment out for now until we figure out how to
-             reformat those pesky special characters. '''
-        #print(article_name)'''
-                 
         #count how many articles we wrote to file
         articleCount = articleCount + 1
-        print('Article #', articleCount, 'written to file')
-        log.append((articleFilename, category_name, section_name, article_name))
+        print('#',articleCount,': ', article_name)
+
+        log.append((article_filename, category_name, section_name, article_name))
      
         #page through the results until next page is null
         endpoint = data['next_page']
 
 # Write log to CSV
-with open(os.path.join(backup_path, '_log.csv'), mode='wt', encoding='utf-8') as f:
-    writer = csv.writer(f)
+with open(os.path.join(backup_path, '_log.csv'), mode='wt', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f,dialect='excel')
     writer.writerow( ('File', 'Category', 'Section', 'Title') )
     for article in log:
         writer.writerow(article)
