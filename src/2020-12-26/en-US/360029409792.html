@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/><title>How do I build a web or mobile app?
+</title></head>
+<body>
+<h1>How do I build a web or mobile app?</h1><br><em><strong>CATEGORY:</strong> Product Development</em><br><em><strong>SECTION:</strong> Software Development</em><br><p>Whether you're a non-technical founder looking to build an app or have a focus on hardware and need to jump into the software side of things then this guide is for you! Although it won't provide specific instructions on how to build software, it will give you a background on software development and system architecture so that you can successfully communicate specifics about a software project. Before you begin you should always ask yourself a couple of questions: </p>
+<p>- Do I need to build anything? (<a href="https://orbit-kb.mit.edu/hc/en-us/articles/206074336-How-can-I-put-up-a-website-without-doing-any-coding-" target="_blank" rel="noopener">Sometimes you don't</a>.)</p>
+<p>- What do I need to build?</p>
+<p>Once you have these questions answered and are ready to proceed with software development you can continue with this guide. Note that this guide is catered to very basic web/mobile based software development and covers only the fundamental high-level architecture. For other kinds of software development and more in-depth information please seek out an expert with our guide to <a href="https://orbit-kb.mit.edu/hc/en-us/articles/360029729391-Recruiting-Technical-Talent-at-MIT" target="_self">recruiting technical talent at MIT</a>.</p>
+<p><strong>Intro</strong></p>
+<p><img src="https://orbit-kb.mit.edu/hc/article_attachments/360031487271/Untitled_Diagram.png" alt="Untitled_Diagram.png"></p>
+<p>There are three key components to developing web/mobile software: your database, API server, and front-end interface(s). We will dive in by examining each individually and how they "talk" to each other.</p>
+<p><strong>Databases</strong></p>
+<p>All of the information for your software needs to live somewhere so that everyone using the software can access the same data. Rather than store it on the device (computer, mobile phone, tablet, etc) you can store it in a central repository called a database, which is connected to the internet and accessible via a server. The database never talks to the user interface (web app, mobile app, etc) directly - rather it goes through an API server, which controls access to the database.</p>
+<p>For example, in an example application that lists movies you might have a database with a number of different data tables such as movies, theaters, and show times. The database must be designed in a way that ensures information is stored securely and in an efficient manner. There is a great article on <a href="https://www.lucidchart.com/pages/database-diagram/database-design" target="_self">database design principals here</a>. </p>
+<p>There are a number of different database systems that you might consider such as MongoDB, MySQL, and PostgreSQL.</p>
+<p><strong>API Server(s)</strong></p>
+<p>API server(s) sit between your database and any user interfaces and provide APIs (application programming interfaces) so that information can be processed and transmitted securely. An API server exposes a number of endpoints, much like the URLs that you use to visit websites, that perform different functions for user interfaces to request. When a user interface makes a request to one of the API endpoints the API server will perform necessary business logic and query the database so that it can return relevant information to the user interface.</p>
+<p>In our movie application example, the user interface might make a request to the API server for an action like "getMovies". The API server would query the "movies" table in the database to get a list of movies, which it would then return in the response to the user interface.</p>
+<p>The API server can be configured and built using any number of programming languages including Node, Java, PHP, Python, or Go.</p>
+<p><strong>User Interfaces</strong></p>
+<p>It's likely that you will have more than one user interface - perhaps a web application, one or two mobile applications, and/or custom hardware interfaces. All of your user interfaces will interact with the database by making requests to the same API server(s). Your user interfaces are likely to be written in different programming languages, but should follow the same data structures as the API.</p>
+<p>If you're building a web application you might consider common modern frameworks such as React or Angular.</p>
+<p>For mobile applications you can choose to write separate applications for iOS in Swift and Android in Java. Alternatively you might choose to build a cross platform mobile application using web technologies like React Native that provide mechanisms to interact with each devices native features. There are pros and cons to choosing cross platform mobile development over native development that must be carefully considered before you begin.</p>
+<p>For embedded hardware software, which likely also has to interact with your database, you might consider writing applications in C/C++, Python, or Java.</p>
+<p><strong>Conclusion</strong></p>
+<p>Ultimately you will need all three components including database, API server(s), and user interface(s) to launch web-based software. There are plenty of resources available to you at MIT to help get started with software development. You may also want to review our guides on <a href="https://orbit-kb.mit.edu/hc/en-us/articles/205164403-How-can-I-learn-more-about-software-development-" target="_self">learning more about software development</a>, <a href="https://orbit-kb.mit.edu/hc/en-us/articles/360029729391" target="_self">recruiting technical talent at MIT</a>, and <a href="https://orbit-kb.mit.edu/hc/en-us/articles/360027922832" target="_self">when to hire a CTO or a dev shop</a>.</p>
+<p> </p></body>
+</html>

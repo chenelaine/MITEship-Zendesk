@@ -1,9 +1,11 @@
-'''
-Created on Oct 16, 2015
 
-@author: Elaine
 '''
+Created on December 19, 2020
+@author: Elaine Chen
 
+This python script iterates through a Zendesk help center and
+exports all articles into a CSV file.
+'''
 import os
 import datetime
 import requests
@@ -142,3 +144,6 @@ with open(os.path.join(backup_path, '_log.csv'), mode='wt', encoding='utf-8') as
     for article in log:
         writer.writerow(article)
 
+
+     
+     
